@@ -1,14 +1,9 @@
-import NextBreadcrumb from '@/components/NextBreadcrumb'
-import Image from 'next/image'
+import Layout, { metadata } from '../app/layout';
 
-export default function Home() {
-  return (
-    <main>
-      <div>
-        <div style={{ paddingTop: '52px', paddingRight: '30px', paddingBottom: '73px', paddingLeft: '30px', justifyContent: 'center' }}>
-        <NextBreadcrumb  />
-        </div>
-      </div>
-    </main>
-  )
-}
+const HomePage = () => {
+  // Your page component logic here
+};
+
+HomePage.metadata = metadata;
+
+export default HomePage;

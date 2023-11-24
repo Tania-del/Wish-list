@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
-
+import { ThemeProvider } from '@mui/material/styles';
+import { colors } from '../styles/colors'
+import { theme } from '..//theme'
 
 const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
 });
+
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,9 +24,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <ThemeProvider theme={theme}>
+      <body className={roboto.className} style={{ backgroundColor: '#F6F7F9'}}>
         {children}
       </body>
+    </ThemeProvider>
+
     </html>
   )
 }
