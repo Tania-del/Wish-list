@@ -6,18 +6,21 @@ import MuiCategoryList from '@/components/MuiCategoryList';
 const products = 158;
 
 const WishListPage = () => {
+  const listItems = ['All products', 'Phones', 'Accessories']
+
   return (
     <>
-      <div style={{ paddingTop: '52px', paddingRight: '30px', paddingBottom: '73px', paddingLeft: '30px'}}>
+      <div className='pt-[52px] pr-[30px] pb-[73px] pl-[30px]'>
         <MuiBreadcrumbs />
-        <div style={{ marginLeft: '16px'}}>
-      <h1 style={{ fontWeight: '800', fontSize: '24px', lineHeight: '24px', paddingBottom: '10px'}}>Wishlist</h1>
-      <p style={{ fontWeight: '400', fontSize: '12px', lineHeight: '15.6px', color: '#999999' }}>{products} products</p>
+        <div className='ml-[10px]'>
+      <h1 className='font-extrabold	text-2xl/[24px] pb-[10px]'>Wishlist</h1>
+      <p className='font-normal text-xs/[15.6px] text-grey'>{products} products</p>
         </div>
-      <MuiCategoryList />
+      <MuiCategoryList listItems={listItems}/>
       </div>
     </>
   )
 }
 
 export default WishListPage;
+

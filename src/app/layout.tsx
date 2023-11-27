@@ -1,9 +1,9 @@
+
+
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@mui/material/styles';
-import { colors } from '../styles/colors'
-import { theme } from '..//theme'
+import Providers from './Providers'
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -21,14 +21,15 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+  }) {
+  
   return (
     <html lang="en">
-      <ThemeProvider theme={theme}>
-      <body className={roboto.className} style={{ backgroundColor: '#F6F7F9'}}>
+      <Providers>
+      <body className={`${roboto.className} bg-light`}>
         {children}
       </body>
-    </ThemeProvider>
+      </Providers>
 
     </html>
   )
