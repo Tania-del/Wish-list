@@ -1,9 +1,12 @@
 'use client'
 import SvgBasket from '@/icons/Basket';
-import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListItemTextProps } from '@mui/material';
+import {
+  Box, List, ListItem, ListItemButton,
+  ListItemIcon, ListItemText, ListItemTextProps,
+  Button
+} from '@mui/material';
 import React, { useState } from 'react'
 import { styled } from '@mui/system';
-import { clsx } from 'clsx';
 
 
 type listItemsType = {
@@ -16,15 +19,10 @@ interface StyledListItemTextProps extends ListItemTextProps {
 
 const ListItemTitle = styled(ListItemText)<StyledListItemTextProps>(({ theme, isActive })  => ({
   '& .MuiTypography-root': {
-    // color: isActive ? theme.palette.white.main : theme.palette.dark.main,
     fontSize: '11px',
     fontWeight: 700,
     fontStyle: 'normal',    
   },
-
-  //  '&:active .MuiTypography-root': {
-  //   color: theme.palette.white.main,
-  // },
 }))
 
 type TTab = 0 | 1 | 2;
@@ -33,6 +31,7 @@ export default function MuiCategoryList({ listItems }: listItemsType) {
   const [tab, setTab] = useState<TTab>(0)
 
   return (
+    <div className='sm:flex justify-between items-center'>
     <Box sx={{
       width: '100%',
       maxWidth: 385,
@@ -43,12 +42,13 @@ export default function MuiCategoryList({ listItems }: listItemsType) {
           margin: '20px 0 20px 0',
           padding: '0',
           display: 'flex',
-          gap: '20px'
+            gap: { xs: '10px', sm: '20px' },
         }}>
           {listItems.map((item, index) => (
           <ListItem key={item} disablePadding sx={{ width: 'auto'}}>
               <ListItemButton sx={[{
                 paddingTop: '8px',
+                height: '32px',
                 paddingRight: '10px',
                 paddingBottom: '8px',
                 paddingLeft: '10px',
@@ -58,7 +58,7 @@ export default function MuiCategoryList({ listItems }: listItemsType) {
                 maxWidth: '115px',
                 backgroundColor: tab === index ? 'gray.dark' : 'gray.lightGray',
                 color: tab === index ? '#FFF' : 'gray.main',
-                
+                whiteSpace: 'nowrap',
               }, {
                 '&:hover': {
                   backgroundColor: 'gray.dark',
@@ -87,9 +87,33 @@ export default function MuiCategoryList({ listItems }: listItemsType) {
           </ListItem>
            ))}
         </List>
-      </nav>
-      {/* <Divider /> */}
-      
-    </Box>
+      </nav>      
+      </Box>
+      <Box>
+        <Button
+        disableRipple
+        variant="outlined"
+        sx={[{
+          width: '100%',
+          height: '32px',
+          padding: '8px 62.5px 8px 62.5px',
+          backgroundColor: 'white.main',
+          border: '1px solid blue.main', 
+          color: 'blue.main',
+          fontSize: '11px',
+          lineHeight: '15.6px',
+          fontStyle: 'normal',
+          fontWeight: 700,
+          },{
+          '&:hover': {
+              backgroundColor: 'blue.main',
+              color: 'white.main'
+           }
+          }
+          ]}>
+        New category
+      </Button>
+      </Box>
+      </div>
   );
 }
