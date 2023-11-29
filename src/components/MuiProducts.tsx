@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import {
+  Box,
+  Button,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
 } from "@mui/material";
 import React from "react";
 
@@ -92,7 +95,7 @@ const MuiProducts = () => {
         >
           <TableHead>
             <TableRow sx={{}}>
-              {titles.map((title) => (
+              {titles.map((title, index) => (
                 <TableCell
                   sx={{
                     borderBottom: "none",
@@ -103,16 +106,16 @@ const MuiProducts = () => {
                     lineHeight: "15.6px",
                     padding: "2.5px 10px",
                     whiteSpace: "nowrap",
-                    "&:first-of-type": {
-                      textAlign: "center",
-                    },
+                    textAlign: index === 2 ? "start" : "center",
                   }}
                   key={title}
                 >
                   {title}
                 </TableCell>
               ))}
-            </TableRow>
+                          <TableCell sx={{ borderBottom: 'unset'}}></TableCell>
+                          <TableCell>dfndfkgs</TableCell>
+                      </TableRow>
           </TableHead>
 
           <TableBody>
@@ -143,6 +146,10 @@ const MuiProducts = () => {
                       padding: "0px 10px",
                       color: "inherit",
                       borderBottom: "unset",
+                      fontSize: "12px",
+                      fontWeight: 700,
+                                lineHeight: "15.6px",
+                      maxWidth: '597px',
                     }}
                   >
                     {row.name}
@@ -152,6 +159,9 @@ const MuiProducts = () => {
                       padding: "0px 10px",
                       color: "inherit",
                       borderBottom: "unset",
+                      lineHeight: "15.6px",
+                      fontSize: "12px",
+                      textAlign: "center",
                     }}
                   >
                     {row.stock}
@@ -161,18 +171,57 @@ const MuiProducts = () => {
                       padding: "0px 10px",
                       color: "inherit",
                       borderBottom: "unset",
+                      textAlign: "center",
                     }}
                   >
                     {row.qty}
+                    <span className="font-bold"> qty.</span>
                   </TableCell>
                   <TableCell
                     sx={{
-                      padding: "0px 10px",
+                      padding: "0px",
                       color: "inherit",
                       borderBottom: "unset",
+                      textAlign: "center",
+                                fontWeight: 700,
+                      maxWidth: '47px'
                     }}
                   >
-                    {row.price}
+                    {`${row.price[0]} €`}
+                    <br />
+                    <span className="font-normal">{`${row.price[1]} $`}</span>
+                  </TableCell>
+
+                  <TableCell
+                    sx={{ borderBottom: "unset" }}
+                  >
+                    <Button
+                      disableRipple
+                      variant="outlined"
+                      sx={[
+                        {
+                          maxWidth: "88px",
+                          padding: "9px 14px 9px 14px",
+                          backgroundColor: "white.main",
+                          border: "1px solid blue.main",
+                          color: "blue.main",
+                          fontSize: "11px",
+                          lineHeight: "15.6px",
+                          fontStyle: "normal",
+                          fontWeight: 700,
+                          whiteSpace: "nowrap",
+                          textTransform: "unset",
+                        },
+                        {
+                          "&:hover": {
+                            backgroundColor: "blue.main",
+                            color: "white.main",
+                          },
+                        },
+                      ]}
+                    >
+                      Add to card
+                    </Button>
                   </TableCell>
                 </TableRow>
               </>

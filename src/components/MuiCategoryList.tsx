@@ -104,6 +104,7 @@ export default function MuiCategoryList({ listItems }: listItemsType) {
           lineHeight: '15.6px',
           fontStyle: 'normal',
           fontWeight: 700,
+          textTransform: 'unset'
           },{
           '&:hover': {
               backgroundColor: 'blue.main',
